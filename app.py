@@ -5,12 +5,14 @@ st.set_page_config(page_title="🌤️ Weather Fetcher", page_icon="🌤️")
 
 st.title("🌦️ Live Weather Fetcher")
 
+api_key = st.secrets["weather_api_key"]
+
 # Ask user for a city
 city = st.text_input("Enter city name:", "")
 
 if city:
     # Use WeatherAPI's free demo endpoint
-    url = f"http://api.weatherapi.com/v1/current.json?key=9370edf3d0494843bff94116252106&q={city}"
+    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}={city}"
     
     # Make the GET request
     response = requests.get(url)
